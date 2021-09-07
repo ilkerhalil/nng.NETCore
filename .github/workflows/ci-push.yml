@@ -24,7 +24,7 @@ jobs:
         run: dotnet build nng.NETCore.sln -c Release
       - name: Test
         run: dotnet test nng.NETCore.sln --no-build -c Release --logger GitHubActions
-      - name: Artifacts
+      - name: Upload Artifacts
         uses: actions/upload-artifact@v2
         with:
           name: nng.NET

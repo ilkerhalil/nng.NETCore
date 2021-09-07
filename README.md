@@ -1,5 +1,8 @@
 # nng<span>.</span>NET/NETCore
 
+![coverage badge](https://github.com/StirlingLabs/nng.NETCore/blob/coverage/coverage/badge_combined.svg)
+[![CodeFactor](https://www.codefactor.io/repository/github/stirlinglabs/nng.NETCore/badge?s=8bddb54013ecc622805241b6565eae25fb07ef5c)](https://www.codefactor.io/repository/github/stirlinglabs/nng.NETCore)
+
 .NET bindings to [NNG](https://github.com/nanomsg/nng):
 
 > NNG, like its predecessors nanomsg (and to some extent ZeroMQ), is a lightweight, broker-less library, offering a simple API to solve common recurring messaging problems, such as publish/subscribe, RPC-style request/reply, or service discovery. The API frees the programmer from worrying about details like connection management, retries, and other common considerations, so that they can focus on the application instead of the plumbing.
@@ -41,7 +44,7 @@ Should be easy to add others that are supported by both .NET Core/5 and NNG.
 
 After installing the package and building, your output folder should have `runtimes/` directory containing native binaries.
 
-Use `NngLoadContext` (or your own [`AssemblyLoadContext`](https://docs.microsoft.com/en-us/dotnet/api/system.runtime.loader.assemblyloadcontext)) to load the appropriate native library and use NNG:  
+Use `NngLoadContext` (or your own [`AssemblyLoadContext`](https://docs.microsoft.com/en-us/dotnet/api/system.runtime.loader.assemblyloadcontext)) to load the appropriate native library and use NNG:
 ```csharp
 var path = Path.GetDirectoryName(typeof(Program).Assembly.Location);
 var ctx = new nng.NngLoadContext(path);
