@@ -13,6 +13,10 @@ jobs:
           submodules: true
       - name: Fetch tag git metadata
         run: git fetch --force --update-shallow --depth 1 origin +refs/tags/*:refs/tags/* || echo no tags
+      - name: Setup .NET 3.x
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 3.1.x
       - uses: actions/setup-dotnet@v1.8.1
         with:
           dotnet-version: 5.0.x
