@@ -3,15 +3,15 @@
   <Import Project="../common.targets" />
 
   <PropertyGroup>
-    <OutputPath>runtimes\any\lib\</OutputPath>
     <DebugType>full</DebugType>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <PackageOutputPath>../bin/$(Configuration)</PackageOutputPath>
+    <PackageOutputPath>../artifacts</PackageOutputPath>
     <!-- Including assembly as part of runtimes/ so don't want it placed in lib/ -->
     <IncludeBuildOutput>false</IncludeBuildOutput>
     <PackageId>nng.NET</PackageId>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <!-- Needed to avoid `error NU5128` when running `dotnet pack`.
-    Assemblies for targetted frameworks are in runtimes/ instead of lib/ or ref/ 
+    Assemblies for targetted frameworks are in runtimes/ instead of lib/ or ref/
     See: https://docs.microsoft.com/en-us/nuget/reference/errors-and-warnings/nu5128#scenario-2
     -->
     <NoWarn>$(NoWarn);NU5128</NoWarn>
@@ -28,7 +28,7 @@
   </ItemGroup>
 
   <!-- Must be run after build so output assembly is in runtimes/ -->
-  <Target Name="Runtimes" AfterTargets="Build">
+  <!-- <Target Name="Runtimes" AfterTargets="Build">
     <ItemGroup>
       <Content Include="runtimes\**">
         <PackagePath>runtimes</PackagePath>
@@ -38,5 +38,8 @@
         <PackagePath>build</PackagePath>
       </Content>
     </ItemGroup>
-  </Target>
+  </Target> -->
+  <ImportGroup>
+    <Import Project="../Version.proj" />
+  </ImportGroup>
 </Project>

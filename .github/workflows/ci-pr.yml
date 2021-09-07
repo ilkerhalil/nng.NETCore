@@ -1,0 +1,39 @@
+name: Integration for PRs
+on:
+  pull_request:
+  workflow_dispatch:
+jobs:
+  build:
+    strategy:
+      matrix:
+        os: [windows-latest, ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    env:
+      DOTNET_NOLOGO: true
+      DOTNET_CLI_TELEMETRY_OPTOUT: true
+      DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        submodules: true
+    - name: Setup .NET 5.x
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 5.0.x
+    - name: build
+      run: dotnet build nng.NETCore.sln -c Release
+    - name: Run Tests
+      run: dotnet test nng.NETCore.sln -c Release --no-build
+    - name: Artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: nng.NET
+        path: |
+          artifacts/*.nupkg
+        if-no-files-found: error
+    - name: Report Coverage to PR
+      uses: StirlingLabs/PROutputAction@v1.0.1
+      with:
+        sources: '.github/coverage/prefix,coverage/,.github/coverage/suffix'
+        token: ${{github.token}}

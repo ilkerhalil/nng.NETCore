@@ -3,14 +3,15 @@
   <Import Project="../common.targets" />
 
   <PropertyGroup>
-    <OutputPath>..\packer\bin\$(Configuration)\lib\</OutputPath>
+    <!-- <OutputPath>..\packer\bin\$(Configuration)\lib\</OutputPath> -->
     <!-- To enable code coverage -->
     <DebugType>full</DebugType>
+
   </PropertyGroup>
 
   <PropertyGroup>
-    <PackageId>nng.NET.Shared</PackageId>
-    <PackageOutputPath>../bin/$(Configuration)</PackageOutputPath>
+    <!-- <PackageId>nng.NET.Shared</PackageId> -->
+    <!-- <PackageOutputPath>../bin/$(Configuration)</PackageOutputPath> -->
   </PropertyGroup>
 
   <ItemGroup>

@@ -1,6 +1,5 @@
 bin/
 obj/
 .vs/
-
-# Output of nng.NET.csproj placed in runtimes/any/
-nng.NET/runtimes/any/
+artifacts/
+coverage/

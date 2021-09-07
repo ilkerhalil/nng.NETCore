@@ -15,16 +15,5 @@
     <LangVersion>7.3</LangVersion>
   </PropertyGroup>
 
-  <PropertyGroup>
-    <VersionPrefix>1.3.2</VersionPrefix>
-    <VersionSuffix>rc2</VersionSuffix>
-    <Authors>Jeikabu</Authors>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <Owners>Jeikabu</Owners>
-    <PackageProjectUrl>https://github.com/jeikabu/nng.NETCore</PackageProjectUrl>
-    <Summary>.NET Core bindings to nng</Summary>
-    <PackageTags>nng csnng</PackageTags>
-    <Description>.NET Core bindings to nng (https://github.com/nanomsg/nng)</Description>
-    <RepositoryUrl>https://github.com/jeikabu/nng.NETCore</RepositoryUrl>
-  </PropertyGroup>
+
 </Project>
