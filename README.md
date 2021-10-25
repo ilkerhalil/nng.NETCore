@@ -7,13 +7,13 @@
 
 > NNG, like its predecessors nanomsg (and to some extent ZeroMQ), is a lightweight, broker-less library, offering a simple API to solve common recurring messaging problems, such as publish/subscribe, RPC-style request/reply, or service discovery. The API frees the programmer from worrying about details like connection management, retries, and other common considerations, so that they can focus on the application instead of the plumbing.
 
+<!--
 __Status__:
-
 Using latest [NNG release](https://github.com/nanomsg/nng/releases).
 
 [![NuGet](https://img.shields.io/nuget/vpre/nng.NET.svg?colorB=brightgreen)](https://www.nuget.org/packages/nng.NET)
 [![GithubActions](https://github.com/jeikabu/nng.NETCore/workflows/build/badge.svg)](https://github.com/jeikabu/nng.NETCore/actions?query=workflow%3Abuild)
-[![codecov](https://codecov.io/gh/jeikabu/nng.NETCore/branch/master/graph/badge.svg?token=KZMer5zeMv)](https://codecov.io/gh/jeikabu/nng.NETCore)
+[![codecov](https://codecov.io/gh/jeikabu/nng.NETCore/branch/master/graph/badge.svg?token=KZMer5zeMv)](https://codecov.io/gh/jeikabu/nng.NETCore) -->
 
 For list of missing APIs/features see [issues (`is:open label:enhancement`)](https://github.com/jeikabu/nng.NETCore/issues?q=is%3Aissue+is%3Aopen+label%3Aenhancement).
 

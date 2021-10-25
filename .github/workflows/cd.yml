@@ -1,0 +1,46 @@
+name: Deployment
+on:
+  push:
+    tags:
+      - 'v*'
+jobs:
+  create-release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: true
+      - name: Fetch tag git metadata
+        run: git fetch --force --update-shallow --depth 1 origin 'refs/tags/*:refs/tags/*'
+      - name: Setup .NET 3.x
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 3.1.x
+      - uses: actions/setup-dotnet@v1.8.1
+        with:
+          dotnet-version: 5.0.x
+      - name: Build
+        run: dotnet build nng.NETCore.sln -c Release
+      - name: Test
+        run: dotnet test nng.NETCore.sln --no-build -c Release --logger GitHubActions
+      - name: Push NuPkg
+        run: dotnet nuget push artifacts/*.nupkg -k ${{github.token}} -s https://nuget.pkg.github.com/${{github.repository_owner}}/index.json -n 1
+      - name: Save coverage to storage branch
+        uses: StirlingLabs/action-storage@v21.07.2
+        with:
+          comment: |
+            Coverage for ${{github.ref}}
+            Action: https://github.com/${{github.repository_owner}}/${{github.repository}}/actions/runs/${{github.run_id}}
+            Commit: https://github.com/${{github.repository_owner}}/${{github.repository}}/commit/${{github.sha}}
+          storage-branch: coverage
+          src: coverage
+          dst: coverage
+          overwrite: true
+      - name: Create Release
+        uses: softprops/action-gh-release@v0.1.12
+        with:
+          name: nng.NETCore
+          files: |
+            artifacts/*.*
+        env:
+          GITHUB_TOKEN: ${{github.token}}
